@@ -12,8 +12,8 @@ class _PluginFolder:
     def _find_files(self):
         for root, dirs, files in os.walk(os.path.join(os.path.dirname(__file__), self.folder)):
             for x in files:
-                if not x.startswith('_') and x.endswith('.py') and x not in self.exclusions \
-                        and not x.split('.', -1)[0] in self.exclusions:
+                if not x.startswith('_') and x.endswith('.py') and x not in self._exclusions \
+                        and not x.split('.', -1)[0] in self._exclusions:
                     yield x.split('.')[0]
 
             if not '__init__.py' in files:

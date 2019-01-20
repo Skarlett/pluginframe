@@ -50,6 +50,18 @@ So in this example - we're actually expecting the handler to be a [set](https://
 Now after running the project - We can see the work was appended on and done.
 
 
+## Super scary big projects
+Some projects are absolutely jaw dropping at how many local files in the project are needed in dependencies. If you're attempting to implement a plugin system based on a large number of local dependencies - it is advised to follow this filesystem structure.
+
+        |-- manager.py
+        `-- plugins
+            |-- __init__.py
+            |-- local
+            |   |-- lib1
+            |   `-- lib2
+            `-- plugin_example.py
+
+
 ## Additions / desired
 
 I think a lot of us want the flexibility of writing plugins for our own applications, but a standardized set of helper functions might be a good way to go if its ever planned to be implemented into a multi-program solution. (Multiple programs sharing a variety of plugins)

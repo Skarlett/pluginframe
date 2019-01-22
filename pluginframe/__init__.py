@@ -102,3 +102,4 @@ class PluginManager:
 
 
 slots = ['PluginManager']
+name = "pluginframe"

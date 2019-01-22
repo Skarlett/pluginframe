@@ -1,4 +1,5 @@
 # pluginframe
+[![Build Status](https://travis-ci.org/Skarlett/pluginframe.svg?branch=master)](https://travis-ci.org/Skarlett/pluginframe)
 
 This project aims to simplify loading modular dependencies in python. 
 

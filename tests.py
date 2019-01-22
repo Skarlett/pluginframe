@@ -1,4 +1,4 @@
-from . import pluginframe
+import pluginframe
 from os import mkdir, rmdir, path, remove
 from string import ascii_letters
 from random import choice

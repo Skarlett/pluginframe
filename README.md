@@ -1,4 +1,5 @@
 # pluginframe
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/25ee5ce995ec48a7b70269dd43189517)](https://app.codacy.com/app/Skarlett/pluginframe?utm_source=github.com&utm_medium=referral&utm_content=Skarlett/pluginframe&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/Skarlett/pluginframe.svg?branch=master)](https://travis-ci.org/Skarlett/pluginframe)
 
 This project aims to simplify loading modular dependencies in python. 

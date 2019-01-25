@@ -98,7 +98,5 @@ class HookManager(DynamicImport):
 
 
 __slots__ = ['DynamicImport', 'HookManager']
-__name__ = 'pluginframe'
 __author__ = 'https://github.com/Skarlett'
-__doc__ = 'This module attempts to simplify dynamically loaded plugins'
 __version__ = '0.1.0'

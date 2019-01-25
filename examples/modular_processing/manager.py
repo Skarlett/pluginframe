@@ -1,9 +1,8 @@
-from pluginframe import PluginManager
-
+from pluginframe import HookManager
 
 class Manager:
     def __init__(self):
-        self.plugin_mgr = PluginManager('plugins')
+        self.plugin_mgr = HookManager('plugins')
         self.work = set()
         self.plugin_mgr.load(self.work)
 

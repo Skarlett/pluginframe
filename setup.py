@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pluginframe',
-    version='0.10',
+    version='0.1.0',
     packages=['pluginframe'],
     url='https://github.com/Skarlett/pluginframe',
     license='Apache 2.0',

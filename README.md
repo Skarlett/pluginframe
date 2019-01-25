@@ -26,10 +26,10 @@ assuming the project structure looks like so, than we can easily call `PluginMan
 
 The handler can be **anything** - it is up to the plugin, and main application to decide how it will be handled. In our main application example - it works like this...
 
-    from pluginframe import PluginManager
+    from pluginframe import HookManager
     class Manager:
         def __init__(self):
-            self.plugin_mgr = PluginManager('plugins')
+            self.plugin_mgr = HookManager('plugins')
             self.work = set()
             self.plugin_mgr.load(self.work)
 

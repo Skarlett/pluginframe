@@ -7,7 +7,7 @@ if sys.version_info.major == 3:
     import importlib
     reload = importlib.reload
 
-logging = logging.basicConfig()
+logging.basicConfig()
 
 
 def _load_module(relpath):

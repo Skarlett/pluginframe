@@ -76,7 +76,7 @@ class DynamicImport:
 
 class HookManager(DynamicImport):
     ''' Uses dynamic loader and expects a hook function '''
-    def __init__(self, folder, excluded_files=None, setup_hook='setup'):
+    def __init__(self, folder, excluded_files=None, init_hook='setup'):
         self._exec_setup = setup_hook
         DynamicImport.__init__(self, folder, excluded_files)
 

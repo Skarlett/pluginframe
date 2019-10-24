@@ -1,11 +1,7 @@
 import logging
 import os
 import sys
-
-if sys.version_info.major == 3:
-    # Monkey patch for python3 to python2
-    import importlib
-    reload = importlib.reload
+import importlib
 
 logging = logging.getLogger(__name__)
 
@@ -45,7 +41,7 @@ class DynamicImport:
             capture = False
             if f in loaded:     # <- Already loaded
                 mod = [x for x in self._modules if x.__name__ == f][0]
-                reload(mod)
+                importlib.reload(mod)
             else:               # <- Never seen before
                 capture = True
                 mod = _load_module(self._folder + '.' + f)

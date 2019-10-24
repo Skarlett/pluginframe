@@ -7,7 +7,7 @@ if sys.version_info.major == 3:
     import importlib
     reload = importlib.reload
 
-logging.basicConfig()
+logging = logging.getLogger(__name__)
 
 
 def _load_module(relpath):
@@ -43,10 +43,10 @@ class DynamicImport:
         loaded = [x.__name__ for x in self._modules]
         for f in self._find_modules():
             capture = False
-            if f in loaded:  # Already loaded
+            if f in loaded:     # <- Already loaded
                 mod = [x for x in self._modules if x.__name__ == f][0]
                 reload(mod)
-            else:  # Never seen before
+            else:               # <- Never seen before
                 capture = True
                 mod = _load_module(self._folder + '.' + f)
 
@@ -75,28 +75,33 @@ class DynamicImport:
 
 
 class HookManager(DynamicImport):
-    ''' Uses dynamic loader and expects a hook function '''
+    '''
+    Takes the modules loaded from `DynamicImport`,
+    then aggregates them into a single "load" function
+    
+    '''
     def __init__(self, folder, excluded_files=None, setup_hook='setup'):
+        super().__init__(folder, excluded_files)
         self._exec_setup = setup_hook
-        DynamicImport.__init__(self, folder, excluded_files)
 
-    def load(self, loader):
-        DynamicImport.load(self)
+    def load(self, *args, **kwargs):
+        
+        super().load()
         for module in self._modules:
             try:
-                getattr(module, self._exec_setup)(loader)
+                getattr(module, self._exec_setup)(*args, **kwargs)
             except Exception as e:
                 logging.exception('Hook failed to load due to {}'.format(e.__class__.__name__))
 
-    def reload(self, loader):
-        DynamicImport.reload(self)
+    def reload(self, *args, **kwargs):
+        super().reload()
         for module in self._modules:
             try:
-                getattr(module, self._exec_setup)(loader)
+                getattr(module, self._exec_setup)(*args, **kwargs)
             except Exception as e:
                 logging.exception('Hook failed to load due to {}'.format(e.__class__.__name__))
 
 
 __slots__ = ['DynamicImport', 'HookManager']
 __author__ = 'https://github.com/Skarlett'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
